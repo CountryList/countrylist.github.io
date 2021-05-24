@@ -33,12 +33,30 @@
           <td class="flag">
             <img class="countryImg" src="{{item.flag}}" />
           </td>
-          <td class="name">{{item.name}}</td>
+          <td class="name"><a class="button" href="#popup1">{{item.name}}</a></td>
           <td class="alpha2Code">{{item.alpha2Code}}</td>
           <td class="alpha3Code">{{item.alpha3Code}}</td>
           <td class="nativeName">{{item.nativeName}}</td>
           <td class="altSpellings">{{item.altSpellings}}</td>
           <td class="callingCodes">{{item.callingCodes}}</td>
+          <div id="popup1" class="overlay">
+            <div class="popup">
+              <h2>其他資訊</h2>
+              <hr>
+              <a class="close" href="#">&times;</a>
+              <div class="content">
+                <ul>
+                  <li>Population: 27657145</li>
+                  <li>Language: Pashto</li>
+                  <li>Capital City: Kabul</li>
+                  <li>Region: Asia</li>
+                  <li>SubRegion: Southern Asia</li>
+                  <li>Native Name: افغانستان</li>
+                  <li>Numeric Code: 004</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </tr>
       </tbody>
     </table>
