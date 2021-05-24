@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - countryList</title>
+  <link rel='stylesheet' href='https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css'>
+<link rel='stylesheet' href='https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="app" v-cloak>
+  <h1>國家目錄</h1><br>
+  國名搜尋：<input type="text" v-model="searchContent">
+  <br>
+  <div class="countryList">
+    <table class="myTable">
+      <thead>
+        <tr>
+          <th>國旗</th>
+          <th>國家名稱</th>
+          <th>2 位國家代碼</th>
+          <th>3 位國家代碼</th>
+          <th>母語名稱</th>
+          <th>替代國家名稱</th>
+          <th>國際電話區號</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="items" v-for="item in items | filterBy searchContent in 'name' | recordLength 'filteredRowCount' | limitBy countOfPage pageStart">
+          <!--       <tr id="test" class="items" v-for="item in items.slice().reverse() | filterBy searchContent in 'name' | recordLength 'filteredRowCount'
+             | limitBy countOfPage pageStart"> -->
+          <td class="flag">
+            <img class="countryImg" src="{{item.flag}}" />
+          </td>
+          <td class="name">{{item.name}}</td>
+          <td class="alpha2Code">{{item.alpha2Code}}</td>
+          <td class="alpha3Code">{{item.alpha3Code}}</td>
+          <td class="nativeName">{{item.nativeName}}</td>
+          <td class="altSpellings">{{item.altSpellings}}</td>
+          <td class="callingCodes">{{item.callingCodes}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 分頁 -->
+  <div class="pagination">
+    <ul>
+      <li v-bind:class="{'disabled': (currPage === 1)}" @click.prevent="setPage(currPage-1)"><a href="#">上頁</a></li>
+      <li v-for="n in totalPage" v-bind:class="{'active': (currPage === (n+1))}" @click.prevent="setPage(n+1)"><a href="#">{{n+1}}</a></li>
+      <li v-bind:class="{'disabled': (currPage === totalPage)}" @click.prevent="setPage(currPage+1)"><a href="#">下頁</a></li>
+    </ul>
+  </div>
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.28/vue.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
